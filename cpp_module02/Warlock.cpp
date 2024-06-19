@@ -33,25 +33,17 @@ void    Warlock::introduce() const {
 }
 
 void    Warlock::learnSpell(ASpell *spell){
-    if(spell)
-        if(_spellMap.find(spell->getName()) == _spellMap.end())
-            _spellMap[spell->getName()] = spell->clone(); //myMap[key] = value;
+    _book.learnSpell(spell);
 }
 
 void    Warlock::forgetSpell(const std::string spell){
-    //myMap.erase(key);
-    if(_spellMap.find(spell) != _spellMap.end())
-        _spellMap.erase(spell);
+    _book.forgetSpell(spell);
 }
 
 void    Warlock::launchSpell(const std::string spell, const ATarget& target) {
-    if(_spellMap.find(spell) != _spellMap.end())
-        _spellMap[spell]->launch(target);
+    _book.createSpell(spell)->launch(target);
 }
         
 Warlock::~Warlock() {
-    for(std::map<std::string, ASpell *>::iterator it = _spellMap.begin(); it != _spellMap.end(); ++it)
-        delete it->second;
-    _spellMap.clear();
     std::cout << _name << ": My job here is done!" << std:: endl;
 }

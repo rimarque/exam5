@@ -4,6 +4,7 @@
 # include <iostream>
 # include <map>
 # include "ATarget.hpp"
+# include "SpellBook.hpp"
 
 class Warlock{
     public:
@@ -25,8 +26,7 @@ class Warlock{
 
         const std::string   _name;
         std::string         _title;
-        std::map<std::string, ASpell *> _spellMap;
-
+        SpellBook           _book;
 };
 
 #endif
