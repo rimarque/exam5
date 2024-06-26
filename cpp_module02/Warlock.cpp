@@ -41,7 +41,9 @@ void    Warlock::forgetSpell(const std::string spell){
 }
 
 void    Warlock::launchSpell(const std::string spell, const ATarget& target) {
-    _book.createSpell(spell)->launch(target);
+    ASpell *new_spell = _book.createSpell(spell);
+    if(new_spell)
+        new_spell->launch(target);
 }
         
 Warlock::~Warlock() {

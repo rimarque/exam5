@@ -35,7 +35,7 @@ void    Warlock::introduce() const {
 void    Warlock::learnSpell(ASpell *spell){
     if(spell)
         if(_spellMap.find(spell->getName()) == _spellMap.end())
-            _spellMap[spell->getName()] = spell->clone(); //myMap[key] = value;
+            _spellMap[spell->getName()] = spell; //myMap[key] = value;
 }
 
 void    Warlock::forgetSpell(const std::string spell){
@@ -50,8 +50,5 @@ void    Warlock::launchSpell(const std::string spell, const ATarget& target) {
 }
         
 Warlock::~Warlock() {
-    for(std::map<std::string, ASpell *>::iterator it = _spellMap.begin(); it != _spellMap.end(); ++it)
-        delete it->second;
-    _spellMap.clear();
     std::cout << _name << ": My job here is done!" << std:: endl;
 }

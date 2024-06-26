@@ -12,7 +12,7 @@ SpellBook& SpellBook::operator=(const SpellBook& copy) {
 void    SpellBook::learnSpell(ASpell *spell){
     if(spell)
         if(_spellMap.find(spell->getName()) == _spellMap.end())
-            _spellMap[spell->getName()] = spell->clone(); //myMap[key] = value;
+            _spellMap[spell->getName()] = spell; //myMap[key] = value;
 }
 
 void    SpellBook::forgetSpell(const std::string& spell){
@@ -27,8 +27,4 @@ ASpell*  SpellBook::createSpell(std::string const & spell){
 	return NULL;
 }
         
-SpellBook::~SpellBook() {
-    for(std::map<std::string, ASpell *>::iterator it = _spellMap.begin(); it != _spellMap.end(); ++it)
-        delete it->second;
-    _spellMap.clear();
-}
+SpellBook::~SpellBook() {}
